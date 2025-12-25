@@ -132,7 +132,7 @@ export const Footer: React.FC = () => {
         
 
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-gray-500 text-xs">
-          <p>© {new Date().getFullYear()} {ORG_INFO.name}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Build with ❤ in India | Powered by <Link to="https://jaiveeru.co.in/" target="_blank" rel="noopener noreferrer">JaiVeeru Creatives</Link></p>
           <div className="flex space-x-6">
             <Link to="/transparency" className="hover:text-logo-red">Privacy Policy</Link>
             <Link to="/transparency" className="hover:text-logo-red">Child Protection</Link>
