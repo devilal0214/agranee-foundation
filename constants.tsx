@@ -79,15 +79,6 @@ export const ORG_INFO = {
   address: 'B4, Sushant Lok, Phase I Sector 27, Gurugram, Haryana 122009'
 };
 
-export const SMTP_CONFIG = {
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false, // true for 465, false for other ports
-  auth: {
-    user: 'your-email@gmail.com', // Replace with your email
-    pass: 'your-app-password' // Replace with your app password
-  }
-};
 
 export const EMAIL_CONFIG = {
   toEmail: 'info@agraneefoundation.org', // All form submissions will be sent here
