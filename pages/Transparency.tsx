@@ -1,10 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { FadeIn } from '../components/FadeIn';
-import { FileText, ShieldCheck, Lock, Scale } from 'lucide-react';
+import { FileText, ShieldCheck, Lock, Scale, X } from 'lucide-react';
 import { ORG_INFO } from '../constants';
 
 export const Transparency: React.FC = () => {
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+
   return (
     <div className="pt-32 pb-24 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6">
@@ -68,6 +70,39 @@ export const Transparency: React.FC = () => {
           </FadeIn>
         </div>
 
+
+          {/* two images block center aligned */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          
+          <FadeIn delay={0.1} className="bg-white p-8 rounded-2xl border border-gray-200">
+             <div 
+               className="aspect-[3/2] rounded-[2rem] overflow-hidden grayscale border-8 border-gray-50 shadow-2xl bg-gray-100 cursor-pointer group"
+               onClick={() => setLightboxImage('/images/certificate.jpg')}
+             >
+                <img 
+                  src="/images/certificate.jpg" 
+                  alt="Registration Certificate" 
+                  className="w-full h-full object-contain transition-transform duration-[3s] group-hover:scale-105"
+                />
+              </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2} className="bg-white p-8 rounded-2xl border border-gray-200">
+            <div 
+              className="aspect-[3/2] rounded-[2rem] overflow-hidden grayscale border-8 border-gray-50 shadow-2xl bg-gray-100 cursor-pointer group"
+              onClick={() => setLightboxImage('/images/trust.jpeg')}
+            >
+                <img 
+                  src="/images/trust.jpeg" 
+                  alt="Trust Document" 
+                  className="w-full h-full object-contain transition-transform duration-[3s] group-hover:scale-105"
+                />
+              </div>
+          </FadeIn>
+
+        </div>
+      {/* two images block center aligned */}
+
         <FadeIn className="bg-white p-12 rounded-3xl border border-gray-100 overflow-hidden relative">
           <div className="max-w-2xl">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">Financial Reports</h3>
@@ -89,7 +124,29 @@ export const Transparency: React.FC = () => {
             </div>
           </div>
         </FadeIn>
+
       </div>
+
+      {/* Lightbox */}
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 z-[9999] bg-black bg-opacity-90 flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors z-[10000]"
+            onClick={() => setLightboxImage(null)}
+          >
+            <X className="w-10 h-10" />
+          </button>
+          <img 
+            src={lightboxImage} 
+            alt="Certificate" 
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 };
